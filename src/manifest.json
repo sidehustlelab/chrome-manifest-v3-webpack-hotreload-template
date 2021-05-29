@@ -1,0 +1,22 @@
+{
+  "name": "Chrome Extension Webpack Template",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open"
+  },
+  "background": {
+    "service_worker": "background-wrapper.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://google.com/*"],
+      "js": ["content.bundle.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "permissions": ["scripting"],
+  "host_permissions": ["https://google.com/"]
+}
