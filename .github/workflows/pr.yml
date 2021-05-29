@@ -1,0 +1,28 @@
+name: Pull request
+
+on: pull_request
+
+jobs:
+  pull_request:
+    name: Build PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build pr-${{ github.event.pull_request.number }}
+          path: dist/
