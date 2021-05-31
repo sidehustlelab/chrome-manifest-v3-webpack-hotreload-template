@@ -103,6 +103,10 @@ var options = {
                 {
                     from: 'src/background-wrapper.js',
                     to: path.join(__dirname, 'dist')
+                },
+                {
+                    from: 'src/pages',
+                    to: path.join(__dirname, 'dist', 'pages')
                 }
             ],
             {
